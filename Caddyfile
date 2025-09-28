@@ -1,0 +1,5 @@
+professormoo.sohrabhossain.com {
+    # Reverse proxy to the 'web' service (the service name in docker-compose)
+    # on its internal port 80 (the port Apache listens on inside the container).
+    reverse_proxy web:80
+}

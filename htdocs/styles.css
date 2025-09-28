@@ -1,0 +1,48 @@
+body {
+  font-family: monospace;
+  background: #fafafa;
+  text-align: center;
+  padding: 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 8px 14px;
+  border: none;
+  background: #444;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #666;
+}
+
+.gray_box {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: #eee;
+  width: 285px;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 4px #aaa;
+  margin: auto auto;
+}
+
+span {
+  display: inline-block;       /* Makes span respect width and height */
+          
+}
+.fade-out {
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+
+

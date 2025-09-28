@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Professor Moo</title>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Main container for the application -->
+  <div>
+  <h1 style="text-align: center;">Professor Moo: The fortune teller</h1>
+
+  <!-- Button to fetch a new fortune from the server -->
+  <button
+    hx-get="/cgi-bin/moo.sh"
+    hx-target="#cowsay-output"
+    hx-swap="innerHTML">
+    Say it, Moo!
+  </button>
+
+ <!-- Container for the cowsay output and fortune input -->
+<div class="gray_box">
+  <span>---------------------------------------</span>
+
+  <div id="cowsay-output">
+    (Click the button to get a fortune)
+    <input type="hidden" id="fortune-input" name="fortune" value="">
+  </div>
+  <span>---------------------------------------</span>
+  <pre>
+      \   ^__^
+       \  (oo)\_______
+          (__)\ 0   0 )\  *
+              ||--0-w | \/
+              ||     ||
+  </pre>
+</div>
+    
+  <!-- Button to save the current fortune -->
+  <button
+    hx-post="/cgi-bin/save_moo.sh"
+    hx-include="#fortune-input"
+    hx-target="#save-status"
+    hx-swap="innerHTML">
+    Save it
+  </button>
+
+  <!-- Status message for saving fortunes -->
+  <div id="save-status"></div>
+</div>
+<!-- Container for download and clear options -->
+<div>
+
+<!-- Form to download saved fortunes as a CSV -->
+<form method="GET" action="/cgi-bin/generate_csv.sh">
+  <button type="submit">Download Saved 🗂</button>
+</form>
+<!-- Button to clear all saved fortunes -->
+<button
+  hx-post="/cgi-bin/clear_db.sh"
+  hx-confirm="Are you sure you want to delete all saved fortunes?"
+  hx-target="#clear-status"
+  hx-swap="innerHTML">
+  Clear All Saved Fortunes 🧹
+</button>
+
+<!-- Status message for clearing fortunes -->
+<div id="clear-status"></div>
+
+
+
+</div>
+</body>
+</html>
